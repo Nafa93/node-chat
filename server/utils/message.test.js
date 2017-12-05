@@ -22,6 +22,6 @@ describe('generateLocationMessage', () => {
     var message = generateLocationMessage(from, latitude, longitude)
 
     expect(message).toInclude({from, url})
-    expect(message.createdAt).toBeA('number')    
+    expect(message.createdAt).toBeA('number')
   })
 })

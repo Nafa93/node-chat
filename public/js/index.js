@@ -1,4 +1,3 @@
-// eslint-disable-next-line
 var socket = io()
 
 socket.on('connect', function () {
@@ -11,11 +10,9 @@ socket.on('disconnect', function () {
 
 socket.on('newMessage', function (message) {
   console.log('New message', message)
-  // eslint-disable-next-line
   var li = jQuery('<li></li>')
   li.text(`${message.from}: ${message.text}`)
 
-  // eslint-disable-next-line
   jQuery('#messages').append(li)
 })
 
@@ -29,25 +26,21 @@ socket.on('newLocationMessage', function (message) {
   jQuery('#messages').append(li)
 })
 
-// eslint-disable-next-line
 jQuery('#message-form').on('submit', function (e) {
   e.preventDefault()
 
   socket.emit('createMessage', {
     from: 'User',
-    // eslint-disable-next-line
     text: jQuery('[name=message]').val()
   }, function () {
 
   })
 })
 
-// eslint-disable-next-line
 var locationButton = jQuery('#send-location')
 
 locationButton.on('click', function () {
   if (!navigator.geolocation) {
-    // eslint-disable-next-line    
     return alert('Geolocation not supported by your browser.')
   }
 
@@ -57,7 +50,6 @@ locationButton.on('click', function () {
       longitude: position.coords.longitude
     })
   }, function () {
-    // eslint-disable-next-line    
     alert('Unable to fetch location.')
   })
 })
